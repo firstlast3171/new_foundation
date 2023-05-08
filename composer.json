@@ -1,0 +1,18 @@
+{
+    "name": "bt/let-train",
+    "description": "\"My First MVC Framework Project\"",
+    "authors": [
+        {
+            "name": "BhoneThit",
+            "email": "firstlast3171@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\" : "./"
+        }
+    }
+}

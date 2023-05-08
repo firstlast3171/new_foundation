@@ -1,0 +1,12 @@
+<?php
+
+
+require_once "vendor/autoload.php";
+
+
+use app\config\Migrate;
+
+$migrate = new Migrate();
+
+$migrate->makeMigrate("Add");
+

@@ -1,0 +1,7 @@
+<?php
+require_once "vendor/autoload.php";
+$files = array_diff(scandir("migrate"),array(".",".."));
+
+foreach($files as $file){
+     require_once "migrate/$file";
+}

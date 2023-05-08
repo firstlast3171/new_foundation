@@ -1,0 +1,8 @@
+<?php
+use app\config\Model;
+
+require_once "vendor/autoload.php";
+
+$model = new Model();
+
+print_r($model->makeModel("Add")) ;
