@@ -25,7 +25,7 @@ class Model
 '.$use.'
 
 class '.$model.' extends Model{
-
+public $table_name="'.$model.'";
 '.$values.'
 }
 ?>';
@@ -51,7 +51,10 @@ if(!file_exists($filename)){
           
      }
 
-     public function create($table,$timezone=""){
+     public function create($table = "",$timezone=""){
+          if($table === ""){
+               $table = $this->table_name;
+          }
           $table = strtolower($table);
           $date = new \DateTime();
           if($timezone === ""){
@@ -72,10 +75,14 @@ if(!file_exists($filename)){
                $insert_value[] = $value;
                $values[$key] = $value;
           }
+          array_shift($values);
+          array_shift($insert_in);
+          array_shift($insert_value);
+
           $insert_in_formOne = implode(",",$insert_in);
-          $insert_in_formTwo = implode(",",array_map(fn($forms) => ":$forms",$insert_in));
-      
-          $statement = $this->connect()->prepare("INSERT INTO `$table` VALUES ($insert_in_formTwo)");
+          $insert_in_formTwo = implode(",",array_map(fn($forms) => ":$forms",$insert_in));          
+        
+          $statement = $this->connect()->prepare("INSERT INTO `$table`($insert_in_formOne) VALUES ($insert_in_formTwo)");
           $statement->execute($values);
       }
 }
