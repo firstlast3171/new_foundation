@@ -29,7 +29,7 @@ use app\config\Session;
        if($validate){
          $user = $request->getBody();
         Session::set("user",$user);
-        Response::redirect("/test");
+        Response::redirect("/add");
        }
      
         // $name = $request->getBody()["name"];

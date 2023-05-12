@@ -19,6 +19,7 @@ $app->route->post("/test",[TestController::class,"index"]);
 
 $app->route->get("/add",[AddController::class,"index"]);
 $app->route->post("/add",[AddController::class,"index"]);
+$app->route->get("/add/post",[AddController::class,"post"]);
 
 $app->route->get("/login",[AuthController::class,"login"]);
 $app->route->post("/login",[AuthController::class,"login"]);

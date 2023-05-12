@@ -14,7 +14,7 @@ use app\models\Test;
      public function index(Request $request){
       if($request->isGet()){
      
-         if(Auth::check("/login","user")){
+         if(Auth::check("user","/login")){
          
             $errors = $this;
             return $this->render("index","main",[
@@ -29,10 +29,8 @@ use app\models\Test;
          "test" => ["required",["min","min"=>32]],
       ]);
       if($validate){
-        $testModel = new Test();
-         $testModel->body = $request->getBody()["test"];
-         $testModel->create();
-      //   Response::redirect("/test");
+    
+        Response::redirect("/test");
       }
      
      }

@@ -4,6 +4,6 @@ require_once "vendor/autoload.php";
 
 $makeController = new \app\config\Controller();
 
-$makeController->MakeController("Add");
+$makeController->MakeController("Post");
 
 

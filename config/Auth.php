@@ -7,7 +7,7 @@ use app\config\Response;
 class Auth
 {
  
- public static function check(string $redirect = "",string $wanttochecck = "user"){
+ public static function check(string $wanttochecck = "user",string $redirect = ""){
   session_start();
     if(isset($_SESSION[$wanttochecck])){
        return $_SESSION[$wanttochecck];

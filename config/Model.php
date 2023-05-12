@@ -85,4 +85,23 @@ if(!file_exists($filename)){
           $statement = $this->connect()->prepare("INSERT INTO `$table`($insert_in_formOne) VALUES ($insert_in_formTwo)");
           $statement->execute($values);
       }
+
+      public function read($by="",$key="",$format=""){
+          if($format === "lastfirst"){
+               $statement = $this->connect()->prepare("SELECT * FROM `$this->table_name` ORDER BY id DESC");
+               $statement->execute();
+               return $statement->fetchAll();
+          }
+          if(!$by){
+              $statement = $this->connect()->prepare("SELECT * FROM `$this->table_name`");
+              $statement->execute();
+              return $statement->fetchAll();
+          }
+         
+          if($by && $key){
+               $statement = $this->connect()->prepare("SELECT * FROM `$this->table_name` WHERE $by=$key");
+              $statement->execute();
+              return $statement->fetch();
+          }
+      }
 }
