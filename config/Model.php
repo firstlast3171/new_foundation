@@ -104,4 +104,14 @@ if(!file_exists($filename)){
               return $statement->fetch();
           }
       }
+
+      public function update(){
+          
+      }
+
+      public function delete($id){
+          $statement = $this->connect()->prepare("DELETE FROM `$this->table_name` WHERE id=$id");
+          $statement->execute();
+          return $statement->rowCount();
+      }
 }
